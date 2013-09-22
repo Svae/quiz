@@ -59,7 +59,7 @@ class AnswerAdmin(ModelAdmin):
 
 class SittingAdmin(admin.ModelAdmin):
 	search_fields = ('user', 'admin')
-	list_display = ('user', 'current_score')
+	list_display = ('user', 'current_score', 'complete')
 
 
 admin.site.register(Quiz, QuizAdmin)

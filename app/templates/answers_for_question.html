@@ -4,29 +4,34 @@
 	<link href="/static/css/app.css" media="screen" rel="stylesheet">
 </head>
 <body>
+
+
 <form action="/quiz/{{ quiz.url }}/take/" method="get">
 
 
 <table class="table table-hover table-bordered" id="answerchoice">
-<tbody>
+
 
 {% for question in questions %}
 
     {% for ans in answers %}
-        <tr>
-            <td>
-                    <label>
-                        <input type="radio" name="guess" value="{{ ans.id }}," class="form-radio">
-                        {{ ans.answer }}
-                    </label>
-            </td>
-        </tr>
+        <tbody>
+            <tr>
+                <td>
+                        <label>
+                            <input type="radio" name="guess" value="{{ ans.id }}," class="form-radio">
+                            {{ ans.answer }}
+                        </label>
+                </td>
+            </tr>
+        </tbody>
     {% endfor %}
 
 {% endfor %}
-</tbody>
+
 </table>
 </form>
+<br>
 <input type="submit" value="Neste" class="btn btn-large btn-block btn-warning" >
 </body>
 </html>

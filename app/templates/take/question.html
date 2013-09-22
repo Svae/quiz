@@ -5,28 +5,31 @@
 </head>
 
 
-{% block title %} {{ quiz.title }}
+{% block content %}
+   {% load staticfiles %}
+<h1> <mark class="itdagene">itDAGENE 2013</mark> konkurranse</h1>
 <form action="/quiz/{{ quiz.url }}/taken/" method="GET">
 <div class="container">
 
 {% if questions %}
     {%  for question in questions %}
-        <br>
         <p class="information">{{ question.content }}</p>
         {% for ans in question.answer_set.all %}
-            <tr>
+        <tr>
             <td>
                     <label>
                         <input type="radio" name="{{ question.id }}" value="{{ ans.id }}" class="form-radio" >
                         {{ ans.answer }}
+                        <br>
                     </label>
             </td>
+
         </tr>
         {% endfor %}
 
     {% endfor %}
     <br>
-<input type="submit" value="Submit" class="btn btn-large btn-block btn-warning" >
+<input type="submit" value="Send inn svar" class="btn btn-large btn-block btn-warning" >
 {% endif %}
 {% endblock %}
 </div>

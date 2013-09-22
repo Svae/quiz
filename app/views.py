@@ -1,6 +1,6 @@
 
 from django.shortcuts import render_to_response, redirect
-#from forms import RegistrationForm, LoginForm
+from forms import RegistrationForm, LoginForm
 from django.template import RequestContext
 from models import *
 from django.contrib import auth
@@ -12,35 +12,33 @@ from django.http import HttpResponseRedirect
 def index(request):
 	return render_to_response('app.html')
 #
-# def login(request):
-# 	if request.method == 'POST':
-# 		form = LoginForm(request.POST)
-# 		if form.is_valid():
-# 			information = form.cleaned_data
-# 			epost = information['epost']
-# 			return render_to_response('logged_in.html')
-# 	else:
-# 		form = LoginForm()
-# 	return render_to_response('login.html', {'form': form})
-#
-# def register(request):
-# 	if request.method == 'GET':
-# 		form = RegistrationForm(request.GET)
-# 		if form.is_valid():
-# 			print(123123)
-# 			information = form.cleaned_data
-# 			fornavn = information['fornavn']
-# 			etternavn = information['etternavn']
-# 			telefonnummer = information['telefonnummer']
-# 			epost = information['epost']
-# 			Participant.objects.create(firstname=fornavn, lastname=etternavn,
-# 			                           email=epost, phonenumber=telefonnummer)
-# 			return render_to_response('registration_complete.html',
-# 			                          {'fornavn':fornavn, 'etternavn':etternavn, 'telefonnummer':telefonnummer, 'epost':epost},
-# 			                          context_instance=RequestContext(request))
-# 	else:
-# 		form = RegistrationForm()
-# 	return render_to_response('registration.html', {'form':form})
+def login(request):
+	if request.method == 'POST':
+		form = LoginForm(request.POST)
+		if form.is_valid():
+			information = form.cleaned_data
+			epost = information['epost']
+			return render_to_response('logged_in.html')
+	else:
+		form = LoginForm()
+	return render_to_response('login.html', {'form': form})
+
+def register(request):
+	if request.method == 'POST':
+		form = RegistrationForm(request.POST)
+		if form.is_valid():
+			information = form.cleaned_data
+			fornavn = information['fornavn']
+			etternavn = information['etternavn']
+			telefonnummer = information['telefonnummer']
+			epost = information['epost']
+			User.objects.create(username= epost, firstname=fornavn, lastname=etternavn,)
+			return render_to_response('registration_complete.html',
+			                          {'fornavn':fornavn, 'etternavn':etternavn, 'telefonnummer':telefonnummer, 'epost':epost},
+			                          context_instance=RequestContext(request))
+	else:
+		form = RegistrationForm()
+	return render_to_response('registration.html', {'form':form})
 
 #def register(request):
 #    if request.method == 'POST':
@@ -61,10 +59,10 @@ def quiz_take(request, quiz_name):
 
 		try:
 			sitting = Sitting.objects.get(user=request.user, quiz=quiz)
-			if sitting.complete:
-				print ('Quiz tatt')
-			else:
-				return user_load_question(request, sitting, quiz)
+		#if sitting.complete:
+		#	index(request)
+		#else:
+			return user_load_question(request, sitting, quiz)
 		except Sitting.DoesNotExist:
 			sitting = Sitting.objects.new_sitting(request.user, quiz)
 			return user_load_question(request, sitting, quiz)
@@ -72,21 +70,8 @@ def quiz_take(request, quiz_name):
 			sitting = Sitting.objects.get(user=request.user, quiz=quiz, complete=False)[0]
 			return user_load_question(request, sitting, quiz)
 
-
-	return
-
-
-	# #
-	# #
-	# # except Sitting.DoesNotExist:
-	# # 	return user_new_quiz_session(request, quiz)
-	# except Sitting.MultipleObjectsReturned:
-	# 	sitting = Sitting.objects.filter(user=request.user, quiz=quiz, complete=False)[0]
-	#  	return user_load_question(request, sitting, quiz)
-	# # else:
-	# 	return user_load_question(request, quiz)
-	#else:
-	#register(request)
+	print(1123)
+	return index(request)
 
 
 def quiz_taken(request, quiz_name):
@@ -99,11 +84,10 @@ def quiz_taken(request, quiz_name):
 			                              )
 		except Sitting.DoesNotExist:
 			sitting = Sitting.objects.new_sitting(request.user, quiz)
-			print("Her er det noe muffins")
 	score = score_for_quiz(request, quiz_name)
 	sitting.add_score(score)
 	sitting.mark_quiz_complete()
-	return render_to_response('result.html', {'quiz':quiz_name}, context_instance = RequestContext(request))
+	return render_to_response('take/result.html', {'quiz':quiz_name}, context_instance = RequestContext(request))
 
 
 def score_for_quiz(request, quiz_name):
@@ -117,9 +101,10 @@ def score_for_quiz(request, quiz_name):
 			quiz_take(request, quiz_name)
 	return points
 
+
 def user_load_question(request, sitting, quiz):
 	question_list = get_question_list(sitting)
-	return render_to_response('question.html', {'quiz':quiz, 'questions':question_list},
+	return render_to_response('take/question.html', {'quiz':quiz, 'questions':question_list},
 	                          context_instance=RequestContext(request))
 
 
