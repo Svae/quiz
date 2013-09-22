@@ -1,0 +1,24 @@
+<html>
+<head>
+	<title>Registrering</title>
+	<link href="/static/css/app.css" media="screen" rel="stylesheet">
+</head>
+
+<body>
+	<h1>Velkommen til <mark class="itdagene">itDAGENE 2013</mark> konkurranse</h1>
+	<section class="information">
+		<hr>
+		<p>Fyll ut skjemaet for å delta i <mark class="itdagene">itDAGENE 2013</mark> konkurransen. Viktig at telefonnummer er riktig, da vi kontakter vinner per telefon. E-postadressen skal være @stud.ntnu.no</p>
+        {%  block content %}
+		<form action="" class="quiz" method="POST">
+            {%  csrf_token %}
+			<table>
+				{{ form.as_p }}
+			</table>
+			<input type="submit" value="Registrer">
+		</form>
+        {% endblock %}
+		<hr>
+	</section>
+</body>
+</html>

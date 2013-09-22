@@ -1,0 +1,33 @@
+<html>
+<head>
+	<title>itDAGENE 2013 konkurranse</title>
+	<link href="/static/css/app.css" media="screen" rel="stylesheet">
+</head>
+
+
+{% block title %} {{ quiz.title }}
+<form action="/quiz/{{ quiz.url }}/taken/" method="GET">
+<div class="container">
+
+{% if questions %}
+    {%  for question in questions %}
+        <br>
+        <p class="information">{{ question.content }}</p>
+        {% for ans in question.answer_set.all %}
+            <tr>
+            <td>
+                    <label>
+                        <input type="radio" name="{{ question.id }}" value="{{ ans.id }}" class="form-radio" >
+                        {{ ans.answer }}
+                    </label>
+            </td>
+        </tr>
+        {% endfor %}
+
+    {% endfor %}
+    <br>
+<input type="submit" value="Submit" class="btn btn-large btn-block btn-warning" >
+{% endif %}
+{% endblock %}
+</div>
+</html>

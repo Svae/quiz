@@ -1,0 +1,21 @@
+
+<head>
+    <meta charset="utf-8">
+	<title>itDAGENE 2013 konkurranse</title>
+<link href="/static/css/app.css" media="screen" rel="stylesheet">
+</head>
+<body>
+
+{% block content %}
+
+<div class="information">
+    	
+    	<div>
+	        {% if user.is_authenticated %}
+	        	<p>Resultat ditt er nå lagret. Pass på å være på plass 15.30 for trekning!</p>
+	        {% endif %}
+        </div>
+</div>
+
+{% endblock %}
+</body>
