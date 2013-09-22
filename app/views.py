@@ -11,17 +11,19 @@ from django.http import HttpResponseRedirect
 
 def index(request):
 	return render_to_response('app.html')
-#
-# def login(request):
-# 	if request.method == 'POST':
-# 		form = LoginForm(request.POST)
-# 		if form.is_valid():
-# 			information = form.cleaned_data
-# 			epost = information['epost']
-# 			return render_to_response('logged_in.html')
-# 	else:
-# 		form = LoginForm()
-# 	return render_to_response('login.html', {'form': form})
+
+def user_login(request):
+	if request.method == 'GET':
+		form = LoginForm(request.GET)
+		if form.is_valid():
+			information = form.cleaned_data
+			epost = information['epost']
+			new_user = authenticate(username=epost, password=epost)
+			login(request, new_user)
+			return render_to_response('registration_complete.html')
+	else:
+		form = LoginForm()
+	return render_to_response('login.html', {'form': form})
 
 
 def register(request):
@@ -32,12 +34,12 @@ def register(request):
 			fornavn = information['fornavn']
 			etternavn = information['etternavn']
 			epost = information['epost']
-			new_user = User.objects.create_user(epost, epost, "pw")
+			new_user = User.objects.create_user(epost, epost, epost)
 			new_user.first_name = fornavn
 			new_user.last_name = etternavn
 			new_user.is_active = True
 			new_user.save()
-			new_user = authenticate(username=epost, password="pw")
+			new_user = authenticate(username=epost, password=epost)
 			login(request, new_user)
 
 			return render_to_response('registration_complete.html',

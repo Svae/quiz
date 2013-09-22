@@ -4,19 +4,21 @@
     <list default="true" id="2232f723-a512-47fb-b429-be526aa19984" name="Default" comment="" />
     <ignored path="quiz.iws" />
     <ignored path=".idea/workspace.xml" />
-    <file path="/urls.py" changelist="2232f723-a512-47fb-b429-be526aa19984" time="1379886108368" ignored="false" />
+    <file path="/urls.py" changelist="2232f723-a512-47fb-b429-be526aa19984" time="1379889277846" ignored="false" />
     <file path="/models.py" changelist="2232f723-a512-47fb-b429-be526aa19984" time="1379875685884" ignored="false" />
     <file path="/settings.py" changelist="2232f723-a512-47fb-b429-be526aa19984" time="1379877878290" ignored="false" />
     <file path="$USER_HOME$/Dropbox/Programmering/Django/quiz/quiz/settings.py" changelist="2232f723-a512-47fb-b429-be526aa19984" time="1379860403038" ignored="false" />
     <file path="/admin.py" changelist="2232f723-a512-47fb-b429-be526aa19984" time="1379877162025" ignored="false" />
-    <file path="/views.py" changelist="2232f723-a512-47fb-b429-be526aa19984" time="1379886855964" ignored="false" />
+    <file path="/views.py" changelist="2232f723-a512-47fb-b429-be526aa19984" time="1379889204293" ignored="false" />
     <file path="/registration.html" changelist="2232f723-a512-47fb-b429-be526aa19984" time="1379882373760" ignored="false" />
-    <file path="/result.html" changelist="2232f723-a512-47fb-b429-be526aa19984" time="1379881103772" ignored="false" />
+    <file path="/result.html" changelist="2232f723-a512-47fb-b429-be526aa19984" time="1379888673477" ignored="false" />
     <file path="/Dummy.txt" changelist="2232f723-a512-47fb-b429-be526aa19984" time="1379876665724" ignored="false" />
     <file path="/answers_for_question.html" changelist="2232f723-a512-47fb-b429-be526aa19984" time="1379879919374" ignored="false" />
     <file path="/README" changelist="2232f723-a512-47fb-b429-be526aa19984" time="1379877071478" ignored="false" />
     <file path="/question.html" changelist="2232f723-a512-47fb-b429-be526aa19984" time="1379881439468" ignored="false" />
     <file path="/registration_complete.html" changelist="2232f723-a512-47fb-b429-be526aa19984" time="1379886572684" ignored="false" />
+    <file path="/login.html" changelist="2232f723-a512-47fb-b429-be526aa19984" time="1379888954795" ignored="false" />
+    <file path="$USER_HOME$/Dropbox/Programmering/Django/quiz/templates/login.html" changelist="2232f723-a512-47fb-b429-be526aa19984" time="1379888749795" ignored="false" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -47,10 +49,10 @@
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="views.py" pinned="false" current="true" current-in-tab="true">
+          <file leaf-file-name="views.py" pinned="false" current="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/app/views.py">
               <provider selected="true" editor-type-id="text-editor">
-                <state line="52" column="35" selection-start="1616" selection-end="1616" vertical-scroll-proportion="1.6474227">
+                <state line="19" column="40" selection-start="528" selection-end="528" vertical-scroll-proportion="0.0">
                   <folding>
                     <element signature="e#1#58#0" expanded="true" />
                   </folding>
@@ -58,10 +60,10 @@
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="registration.html" pinned="false" current="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/app/templates/registration.html">
+          <file leaf-file-name="result.html" pinned="false" current="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/app/templates/take/result.html">
               <provider selected="true" editor-type-id="text-editor">
-                <state line="18" column="15" selection-start="639" selection-end="639" vertical-scroll-proportion="-11.769231">
+                <state line="15" column="68" selection-start="420" selection-end="420" vertical-scroll-proportion="-9.807693">
                   <folding />
                 </state>
               </provider>
@@ -85,10 +87,10 @@
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="urls.py" pinned="false" current="false" current-in-tab="false">
+          <file leaf-file-name="urls.py" pinned="false" current="true" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/app/urls.py">
               <provider selected="true" editor-type-id="text-editor">
-                <state line="12" column="1" selection-start="569" selection-end="569" vertical-scroll-proportion="0.0">
+                <state line="12" column="1" selection-start="525" selection-end="525" vertical-scroll-proportion="0.43965518">
                   <folding>
                     <element signature="e#0#39#0" expanded="true" />
                   </folding>
@@ -100,15 +102,6 @@
             <entry file="file://$PROJECT_DIR$/quiz/settings.py">
               <provider selected="true" editor-type-id="text-editor">
                 <state line="112" column="30" selection-start="4042" selection-end="4042" vertical-scroll-proportion="0.0">
-                  <folding />
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file leaf-file-name="question.html" pinned="false" current="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/app/templates/take/question.html">
-              <provider selected="true" editor-type-id="text-editor">
-                <state line="35" column="7" selection-start="969" selection-end="969" vertical-scroll-proportion="-15.115385">
                   <folding />
                 </state>
               </provider>
@@ -126,7 +119,7 @@
           <file leaf-file-name="login.html" pinned="false" current="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/app/templates/login.html">
               <provider selected="true" editor-type-id="text-editor">
-                <state line="5" column="7" selection-start="146" selection-end="146" vertical-scroll-proportion="-0.65384614">
+                <state line="15" column="28" selection-start="409" selection-end="409" vertical-scroll-proportion="-8.5">
                   <folding />
                 </state>
               </provider>
@@ -136,10 +129,19 @@
       </split-first>
       <split-second>
         <leaf>
-          <file leaf-file-name="app.html" pinned="false" current="false" current-in-tab="true">
+          <file leaf-file-name="app.html" pinned="false" current="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/app/templates/app.html">
               <provider selected="true" editor-type-id="text-editor">
-                <state line="4" column="7" selection-start="130" selection-end="130" vertical-scroll-proportion="0.13572854">
+                <state line="0" column="6" selection-start="6" selection-end="6" vertical-scroll-proportion="-0.0">
+                  <folding />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="registration.html" pinned="false" current="false" current-in-tab="true">
+            <entry file="file://$PROJECT_DIR$/app/templates/registration.html">
+              <provider selected="true" editor-type-id="text-editor">
+                <state line="18" column="15" selection-start="639" selection-end="639" vertical-scroll-proportion="0.61077845">
                   <folding />
                 </state>
               </provider>
@@ -163,23 +165,23 @@
         <option value="$PROJECT_DIR$/README" />
         <option value="$PROJECT_DIR$/app/admin.py" />
         <option value="$PROJECT_DIR$/quiz/settings.py" />
-        <option value="$PROJECT_DIR$/app/templates/login.html" />
         <option value="$PROJECT_DIR$/app/forms.py" />
         <option value="$PROJECT_DIR$/app/templates/answers_for_question.html" />
         <option value="$PROJECT_DIR$/app/templates/question.html" />
-        <option value="$PROJECT_DIR$/app/templates/take/result.html" />
         <option value="$PROJECT_DIR$/app/templates/take/question.html" />
         <option value="$PROJECT_DIR$/app/templates/registration.html" />
         <option value="$PROJECT_DIR$/app/templates/registration_complete.html" />
-        <option value="$PROJECT_DIR$/app/urls.py" />
+        <option value="$PROJECT_DIR$/app/templates/take/result.html" />
+        <option value="$PROJECT_DIR$/app/templates/login.html" />
         <option value="$PROJECT_DIR$/app/views.py" />
+        <option value="$PROJECT_DIR$/app/urls.py" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds">
     <option name="x" value="-10" />
     <option name="y" value="9" />
-    <option name="width" value="1382" />
+    <option name="width" value="1467" />
     <option name="height" value="1024" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="false">
@@ -499,7 +501,7 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-10" y="9" width="1382" height="1024" extended-state="0" />
+    <frame x="-10" y="9" width="1467" height="1024" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -507,7 +509,7 @@
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32925472" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.18030304" sideWeight="0.65282583" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.16939501" sideWeight="0.65282583" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
@@ -619,23 +621,16 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/templates/take/result.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="15" column="25" selection-start="377" selection-end="377" vertical-scroll-proportion="-9.807693">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/templates/answers_for_question.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="29" column="12" selection-start="686" selection-end="686" vertical-scroll-proportion="-18.961538">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/templates/take/question.html">
       <provider selected="true" editor-type-id="text-editor">
         <state line="35" column="7" selection-start="969" selection-end="969" vertical-scroll-proportion="-15.115385">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/quiz/settings.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="112" column="30" selection-start="4042" selection-end="4042" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
@@ -647,16 +642,9 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/templates/registration.html">
+    <entry file="file://$PROJECT_DIR$/app/templates/take/result.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="18" column="15" selection-start="639" selection-end="639" vertical-scroll-proportion="-11.769231">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/templates/login.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="5" column="7" selection-start="146" selection-end="146" vertical-scroll-proportion="-0.65384614">
+        <state line="15" column="68" selection-start="420" selection-end="420" vertical-scroll-proportion="-9.807693">
           <folding />
         </state>
       </provider>
@@ -675,27 +663,41 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/urls.py">
+    <entry file="file://$PROJECT_DIR$/app/templates/answers_for_question.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="12" column="1" selection-start="569" selection-end="569" vertical-scroll-proportion="0.0">
-          <folding>
-            <element signature="e#0#39#0" expanded="true" />
-          </folding>
+        <state line="29" column="12" selection-start="686" selection-end="686" vertical-scroll-proportion="-18.961538">
+          <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/quiz/settings.py">
+    <entry file="file://$PROJECT_DIR$/app/templates/registration.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="112" column="30" selection-start="4042" selection-end="4042" vertical-scroll-proportion="0.0">
+        <state line="18" column="15" selection-start="639" selection-end="639" vertical-scroll-proportion="0.61077845">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/templates/login.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="15" column="28" selection-start="409" selection-end="409" vertical-scroll-proportion="-8.5">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/views.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="52" column="35" selection-start="1616" selection-end="1616" vertical-scroll-proportion="1.6474227">
+        <state line="19" column="40" selection-start="528" selection-end="528" vertical-scroll-proportion="0.0">
           <folding>
             <element signature="e#1#58#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/urls.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="12" column="1" selection-start="525" selection-end="525" vertical-scroll-proportion="0.43965518">
+          <folding>
+            <element signature="e#0#39#0" expanded="true" />
           </folding>
         </state>
       </provider>

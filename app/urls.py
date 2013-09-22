@@ -4,7 +4,7 @@ import views
 
 urlpatterns = patterns('',
 	(r'^$', views.index),
-	(r'^login$', 'django.contrib.auth.views.login', {'template_name': 'login.html'}),
+	(r'^login$', 'app.views.user_login'),
 	(r'^register/$', 'app.views.register'),
 	url(r'^take/(?P<quiz_name>[\w-]+)/$', 'app.views.quiz_take'), #  quiz/
 	url(r'^take/(?P<quiz_name>[\w-]+)$', 'app.views.quiz_take'), #  quiz
