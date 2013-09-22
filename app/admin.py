@@ -22,7 +22,7 @@ class QuizAdminForm(forms.ModelForm):
 	def __init__(self, *args, **kwargs):
 		super(QuizAdminForm, self).__init__(*args, **kwargs)
 		if self.instance.pk:
-			self.fields['question'].inital = self.instance.queston_set.all()
+			self.fields['question'].inital = self.instance.question_set.all()
 
 	def save(self, commit=True):
 		quiz = super(QuizAdminForm, self).save(commit=False)
