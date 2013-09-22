@@ -3,57 +3,52 @@ from django.shortcuts import render_to_response, redirect
 from forms import RegistrationForm, LoginForm
 from django.template import RequestContext
 from models import *
-from django.contrib import auth
+
 from django import forms
-from django.contrib.auth.forms import UserCreationForm
+from django.contrib.auth import authenticate, login
 from django.http import HttpResponseRedirect
 
 
 def index(request):
 	return render_to_response('app.html')
 #
-def login(request):
-	if request.method == 'POST':
-		form = LoginForm(request.POST)
-		if form.is_valid():
-			information = form.cleaned_data
-			epost = information['epost']
-			return render_to_response('logged_in.html')
-	else:
-		form = LoginForm()
-	return render_to_response('login.html', {'form': form})
+# def login(request):
+# 	if request.method == 'POST':
+# 		form = LoginForm(request.POST)
+# 		if form.is_valid():
+# 			information = form.cleaned_data
+# 			epost = information['epost']
+# 			return render_to_response('logged_in.html')
+# 	else:
+# 		form = LoginForm()
+# 	return render_to_response('login.html', {'form': form})
+
 
 def register(request):
-	if request.method == 'POST':
-		form = RegistrationForm(request.POST)
+	if request.method == 'GET':
+		form = RegistrationForm(request.GET)
 		if form.is_valid():
 			information = form.cleaned_data
 			fornavn = information['fornavn']
 			etternavn = information['etternavn']
-			telefonnummer = information['telefonnummer']
 			epost = information['epost']
-			User.objects.create(username= epost, firstname=fornavn, lastname=etternavn,)
+			new_user = User.objects.create_user(epost, epost, "pw")
+			new_user.first_name = fornavn
+			new_user.last_name = etternavn
+			new_user.is_active = True
+			new_user.save()
+			new_user = authenticate(username=epost, password="pw")
+			login(request, new_user)
+
 			return render_to_response('registration_complete.html',
-			                          {'fornavn':fornavn, 'etternavn':etternavn, 'telefonnummer':telefonnummer, 'epost':epost},
+			                          {'fornavn':fornavn, 'etternavn':etternavn, 'epost':epost},
 			                          context_instance=RequestContext(request))
 	else:
 		form = RegistrationForm()
 	return render_to_response('registration.html', {'form':form})
 
-#def register(request):
-#    if request.method == 'POST':
-#       form = UserCreationForm(request.POST)
-#        if form.is_valid():
-#            new_user = form.save()
-#            return HttpResponseRedirect("logged_in.html")
-#    else:
-#        form = UserCreationForm()
-#    return render_to_response(request, "/templates/registration.html", {
-#        'form': form,
-#    })
 
-
-def quiz_take(request, quiz_name):
+def quiz_take(request,quiz_name):
 	if request.user.is_authenticated():
 		quiz = Quiz.objects.get(url=quiz_name.lower())
 
