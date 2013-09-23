@@ -5,9 +5,9 @@ from models import *
 from django import forms
 
 
-# class QuestionInLine(admin.TabularInline):
-# 	model = Question.quiz.through
-# 	filter_horizontal = ('content',)
+class QuestionInLine(admin.TabularInline):
+ 	model = Question.quiz.through
+ 	filter_horizontal = ('content',)
 
 
 class AnswerInLine(admin.TabularInline):
@@ -48,24 +48,17 @@ class QuestionAdmin(admin.ModelAdmin):
 	inlines = [AnswerInLine]
 
 
-#class ParticipantAdmin(admin.ModelAdmin):
-	#list_display = ('firstname', 'lastname', 'email', 'phonenumber')
-	#search_fields = ('firstname', 'lastname',  'phonenumber','email',)
-
-
 class AnswerAdmin(ModelAdmin):
 	list_display = ('question', 'answer', 'is_correct')
 
 
 class SittingAdmin(admin.ModelAdmin):
-	search_fields = ('user', 'admin')
-	list_display = ('user', 'current_score', 'complete')
+	list_display = ('name', 'phonenumber', 'score')
 
 
 admin.site.register(Quiz, QuizAdmin)
-#admin.site.register(Participant, ParticipantAdmin)
 admin.site.register(Question, QuestionAdmin)
 admin.site.register(Answer, AnswerAdmin)
 admin.site.register(Sitting, SittingAdmin)
-#admin.site.register(Result, ResultAdmin)
+
 

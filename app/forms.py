@@ -1,9 +1,9 @@
 from django import forms
 
 class RegistrationForm(forms.Form):
-	fornavn = forms.CharField(required=True, max_length=20)
-	etternavn = forms.CharField(required=True, max_length=20)
-	epost = forms.EmailField(required=True)
+	name = forms.CharField(required=True, max_length=100)
+	email = forms.EmailField(required=True)
+	phonenumber = forms.CharField(required=True, max_length= 12)
 
 class LoginForm(forms.Form):
-	epost = forms.EmailField(required=True)
+	phonenumber = forms.CharField(required=True, max_length=12)
