@@ -10,13 +10,14 @@
 		<hr>
 		<p>Fyll inn e-postadressen du registrerte deg med for å 
 			tilbake ditt svarskjema</p>
-
+        {% block content %}
 		<form action="" class="quiz" method="GET">
             <table>
 				{{ form.as_p }}
 			</table>
 			<input type="submit" value="Login">
 		</form>
+        {% endblock %}
 		<hr>
 	</section>
 </body>

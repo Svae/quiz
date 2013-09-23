@@ -5,9 +5,11 @@ import views
 urlpatterns = patterns('',
 	(r'^$', views.index),
 	(r'^login$', 'app.views.user_login'),
-	(r'^register/$', 'app.views.register'),
-	url(r'^take/(?P<quiz_name>[\w-]+)/$', 'app.views.quiz_take'), #  quiz/
-	url(r'^take/(?P<quiz_name>[\w-]+)$', 'app.views.quiz_take'), #  quiz
-	url(r'^(?P<quiz_name>[\w-]+)/taken/$', 'app.views.quiz_taken'), #  quiz/take/
-	url(r'^(?P<quiz_name>[\w-]+)taken$', 'app.views.quiz_take'), #  quiz/take
+	(r'^registrer/$', 'app.views.register'),
+	#(r'^toquiz/', 'app.views.toQuiz'),
+	#url(r'^winner/$', 'app.views.get_winner'),
+	url(r'^take/(?P<phonenumber>[\w-]+)/$', 'app.views.check_user'), #  quiz/
+	url(r'^take/(?P<phonenumber>[\w-]+)$', 'app.views.check_user'), #  quiz
+	url(r'^(?P<phonenumber>[\w-]+)/taken/$', 'app.views.quiz_taken'), #  quiz/take/
+	url(r'^(?P<phonenumber>[\w-]+)/taken$', 'app.views.quiz_taken'), #  quiz/take
 )

@@ -1,36 +1,19 @@
-import re
+
 from django.db import models
-from django.contrib.auth.models import User
 
 
 
 class Quiz(models.Model):
 	title = models.CharField(max_length=100)
 	description = models.CharField(max_length=300)
-	url = models.CharField(max_length=10)
 	random_order = models.BooleanField()
-	numnber_of_question = models.IntegerField()
-
-	def save(self, force_insert=False, force_update=False):
-		self.url = self.url.replace(' ', '-').lower()
-		super(Quiz, self).save(force_insert, force_update)
+	number_of_question = models.IntegerField()
 
 	class Meta:
 		verbose_name = 'Quiz'
 
 	def __unicode__(self):
 		return self.title
-
-
-# class Participant(models.Model):
-#   user = models.OneToOneField(User)
-# 	firstname = models.CharField(max_length=20)
-# 	lastname = models.CharField(max_length=20)
-# 	email = models.EmailField(unique=True)
-# 	phonenumber = models.CharField(max_length=8)
-#
-# 	def __unicode__(self):
-# 		return (self.firstname + ' ' + self.lastname)
 
 
 class Question(models.Model):
@@ -52,60 +35,64 @@ class Answer(models.Model):
 	def __unicode__(self):
 		return self.answer
 
-
-#class ResultManager(models.Manager):
-	#def new_result(self, user, score):
-	#	new_result = self.create(user=user, score=score)
-	#	if self.score > 7:
-	#		self.valid = True
-	#	else:
-	#		False
-	#	return new_result
-
-
-
-class SittingManager(models.Manager):
-
-	def new_sitting(self, user, quiz):
-		if quiz.random_order:
-			question_set = quiz.question_set.all().order_by('?')
-		else:
-			question_set = quiz.question_set.all()
-
-		questions = []
-		number_of_question = quiz.numnber_of_question
-		for question in question_set:
-			questions.append(str(question.id))
-
-		while len(questions) > number_of_question:
-			questions.pop
-
-		questions_list = ','.join(questions)
-
-		new_sitting = self.create(user=user, quiz=quiz,
-		                          question_list=questions_list, current_score =0, complete=False)
-		new_sitting.save()
-		return new_sitting
-
-
 class Sitting(models.Model):
-	user = models.ForeignKey('auth.User')
+	name = models.TextField(max_length=300)
+	email = models.EmailField()
+	phonenumber = models.CharField(max_length=12, unique=True)
+	answers = models.TextField(default="")
 	quiz = models.ForeignKey(Quiz)
-	question_list = models.TextField()
-	current_score = models.IntegerField(default=0)
-	complete = models.BooleanField(default=False)
-	objects = SittingManager()
+	questions = models.TextField(default="")
+	score = models.IntegerField(default=0)
+
+	def get_quiz(self):
+		return self.quiz.title
+
+	def get_score(self):
+		return self.score
+
+	def get_answerlist(self):
+		answer_list = []
+		answer = self.questions.split(",")
+		for ans in answer:
+			answer.append(int(ans))
+		return answer_list
+
+	def get_questions(self):
+		return self.questions.split(",")
+
+	def get_answers(self):
+		return self.answers.split(",")
+
 
 	def add_score(self, points):
-		self.current_score = points
+		self.score = points
 		self.save()
 
-	def get_current_score(self):
-		return self.current_score
-
-	def mark_quiz_complete(self):
-		self.complete = True
+	def add_quiz(self):
+		self.quiz = Quiz.objects.get(title='test')
 		self.save()
 
-	def get_question_list(self):
-		return self.question_list
+	def update_answers(self, answers):
+		self.answers = ",".join(answers)
+		self.save()
+
+	def create_questions(self):
+		all_questions = self.quiz.question_set.all().order_by('?')
+		question_list = []
+		for question in all_questions:
+			question_list.append(str(question.id))
+		limit = self.quiz.number_of_question
+		questions = ",".join(question_list[:limit])
+		self.questions = questions
+		self.save()
+
+
+	def add_answer(self, answer_id):
+		temp = self.answers
+		self.answers = temp + "," + str(answer_id)
+		self.save()
+		return self.answers
+
+
+
+

@@ -6,9 +6,8 @@
 
 
 {% block content %}
-   {% load staticfiles %}
 <h1> <mark class="itdagene">itDAGENE 2013</mark> konkurranse</h1>
-<form action="/quiz/{{ quiz.url }}/taken/" method="GET">
+<form action="/quiz/{{ sitting.phonenumber }}/taken/" method="GET">
 <div class="container">
 
 {% if questions %}
@@ -18,7 +17,7 @@
         <tr>
             <td>
                     <label>
-                        <input type="radio" name="{{ question.id }}" value="{{ ans.id }}" class="form-radio" >
+                        <input type="radio" name="{{ question.id }}" value="{{ ans.id }}" class="form-radio"> {#{% if ans.id in sitting.get_answerlist %} checked="checked"{% endif %}#}
                         {{ ans.answer }}
                         <br>
                     </label>

@@ -10,7 +10,7 @@
 		<hr>
 		<p>Fyll ut skjemaet for å delta i <mark class="itdagene">itDAGENE 2013</mark> konkurransen. Viktig at telefonnummer er riktig, da vi kontakter vinner per telefon. E-postadressen skal være @stud.ntnu.no</p>
         {%  block content %}
-		<form action="" class="quiz" method="GET">{%  csrf_token %}
+		<form action="" class="quiz" method="GET">
 
 			<table>
 				{{ form.as_p }}
