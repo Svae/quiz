@@ -115,7 +115,7 @@ def user_load_question(sitting):
 		try:
 			questions.append(Question.objects.get(id=str(question)))
 		except Question.DoesNotExist:
-			print("ops")
+			return render_to_response('app.html')
 	return render_to_response('take/question.html', {'quiz': quiz, 'questions': questions, 'answers_list': answers_list, 'sitting': sitting},)
 
 
