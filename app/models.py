@@ -1,7 +1,4 @@
-
 from django.db import models
-
-
 
 class Quiz(models.Model):
 	title = models.CharField(max_length=100)
@@ -26,6 +23,7 @@ class Question(models.Model):
 
 	def __unicode__(self):
 		return self.content
+
 
 class Answer(models.Model):
 	question = models.ForeignKey(Question)

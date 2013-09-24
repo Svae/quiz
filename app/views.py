@@ -22,13 +22,11 @@ def user_login(request):
 			if sitting:
 				return user_load_question(sitting)
 			else:
-				return render_to_response('app.html')
+				form=LoginForm()
+				return render_to_response('login.html', {'form': form})
 	else:
 		form = LoginForm()
 	return render_to_response('login.html', {'form': form})
-
-#def toQuiz(request):
-
 
 
 def register(request):
@@ -40,11 +38,15 @@ def register(request):
 			email = information['email']
 			phonenumber = information['phonenumber']
 			quiz = Quiz.objects.get(title='test')
-			sitting = Sitting.objects.create(name=name, email=email, phonenumber=phonenumber, quiz=quiz)
-			sitting.add_quiz()
-			sitting.create_questions()
-			print(sitting.questions)
-			return user_load_question(sitting)
+			try:
+				sitting = Sitting.objects.get(phonenumber=phonenumber)
+				return user_load_question(sitting)
+			except Sitting.DoesNotExist:
+				sitting = Sitting.objects.create(name=name, email=email, phonenumber=phonenumber, quiz=quiz)
+				sitting.add_quiz()
+				sitting.create_questions()
+				print(sitting.questions)
+				return user_load_question(sitting)
 	else:
 		form = RegistrationForm()
 	return render_to_response('registration.html', {'form':form})
