@@ -51,8 +51,9 @@ class Sitting(models.Model):
 	def get_answerlist(self):
 		answer_list = []
 		answer = self.questions.split(",")
-		for ans in answer:
-			answer_list.append(int(ans))
+		if answer:
+			for ans in answer:
+				answer_list.append(int(ans))
 		return answer_list
 
 	def get_questions(self):
