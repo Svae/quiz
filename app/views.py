@@ -14,7 +14,6 @@ def index(request):
 def user_login(request):
 	if request.method == 'GET':
 		form = LoginForm(request.GET)
-		print("hei")
 		if form.is_valid():
 			information = form.cleaned_data
 			phonenumber = information['phonenumber']
@@ -45,7 +44,6 @@ def register(request):
 				sitting = Sitting.objects.create(name=name, email=email, phonenumber=phonenumber, quiz=quiz)
 				sitting.add_quiz()
 				sitting.create_questions()
-				print(sitting.questions)
 				return user_load_question(sitting)
 	else:
 		form = RegistrationForm()
@@ -77,13 +75,11 @@ def check_user(phonenumber):
 
 def quiz_taken(request, phonenumber):
 	sitting = check_sitting(phonenumber)
-	print("inn")
 	if sitting:
 		score = score_for_quiz(request, sitting)
 		sitting.add_score(score)
 		answers = update_user_answers(request, sitting)
 		sitting.update_answers(answers)
-	print("riktig")
 	return render_to_response('take/result.html')
 
 
@@ -109,18 +105,18 @@ def update_user_answers(request, sitting):
 			user_load_question(sitting)
 	return answers
 
+
 def user_load_question(sitting):
 	quiz = sitting.quiz
 	all_questions = sitting.questions.split(",")
-	answers = sitting.get_answers()
+	answers_list = sitting.get_answerlist()
 	questions = []
 	for question in all_questions:
 		try:
 			questions.append(Question.objects.get(id=str(question)))
 		except Question.DoesNotExist:
 			print("ops")
-	print(questions)
-	return render_to_response('take/question.html', {'quiz': quiz, 'questions': questions, 'answers': answers, 'sitting': sitting},)
+	return render_to_response('take/question.html', {'quiz': quiz, 'questions': questions, 'answers_list': answers_list, 'sitting': sitting},)
 
 
 def get_question_list(sitting):
@@ -131,15 +127,16 @@ def get_question_list(sitting):
 	return question_array
 
 
-# def get_winner(quiz_name):
-# 	quiz = Quiz.objects.get(url='itdagene')
-# 	threshold = quiz.numnber_of_question
-# 	participants = Sitting.objects.filter(quiz=quiz)
-# 	valid = []
-# 	for participant in participants:
-# 		print(3312)
-# 		if participant.get_current_score() > (threshold/2):
-# 			valid.append(participant.user.first_name)
-#
-# 	return render_to_response('winner.html', {'winners':valid})
-#
+def get_winner(quiz_name):
+	quiz = Quiz.objects.get(title='test')
+	threshold = quiz.number_of_question/2
+	sittings = Sitting.objects.filter(quiz=quiz).order_by('?')
+	valid = []
+	for sitting in sittings:
+		if sitting.get_score() > threshold:
+			valid.append(sitting)
+	winner = valid[0]
+
+
+	return render_to_response('winner.html', {'winners':valid, 'thewinner':winner})
+

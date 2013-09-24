@@ -1,11 +1,17 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Vinner</title>
+    <title>Vinner av konkurranse</title>
+    <link href="/static/css/app.css" media="screen" rel="stylesheet">
 </head>
 <body>
+<h1> Trekning av <mark class="itdagene">itDAGENE</mark> konkuranse</h1>
+<h3> Deltakere med i trekningen</h3>
 {%  for winner in winners %}
-    {{ winner }}
+    <h4>{{ winner.name }}</h4>
 {% endfor %}
+
+<h2>Vinneren er:</h2>
+<h1> {{ thewinner.name }}</h1>
 </body>
 </html>
