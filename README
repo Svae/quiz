@@ -1,1 +1,1 @@
-Det eneste som mangler nå er å få fiksa template slik at den check de svara du har svart på tidliger
+Eneste som mangler er å legge til Csrf_tokens i templatene og bruke POST istede for GET i formsa
